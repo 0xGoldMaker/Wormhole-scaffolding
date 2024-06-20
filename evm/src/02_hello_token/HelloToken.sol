@@ -29,15 +29,15 @@ contract HelloToken is HelloTokenGovernance, HelloTokenMessages, ReentrancyGuard
         address tokenBridge_,
         uint16 chainId_,
         uint8 wormholeFinality_,
-        uint32 feePrecision,
-        uint32 relayerFeePercentage
+        uint32 feePrecision_,
+        uint32 relayerFeePercentage_
     ) {
         // sanity check input values
         require(wormhole_ != address(0), "invalid Wormhole address");
         require(tokenBridge_ != address(0), "invalid TokenBridge address");
         require(chainId_ > 0, "invalid chainId");
         require(wormholeFinality_ > 0, "invalid wormholeFinality");
-        require(feePrecision > 0, "invalid fee precision");
+        require(feePrecision_ > 0, "invalid fee precision");
 
         // set constructor state variables
         setOwner(msg.sender);
@@ -45,8 +45,8 @@ contract HelloToken is HelloTokenGovernance, HelloTokenMessages, ReentrancyGuard
         setTokenBridge(tokenBridge_);
         setChainId(chainId_);
         setWormholeFinality(wormholeFinality_);
-        setFeePrecision(feePrecision);
-        setRelayerFeePercentage(relayerFeePercentage);
+        setFeePrecision(feePrecision_);
+        setRelayerFeePercentage(relayerFeePercentage_);
     }
 
     /**

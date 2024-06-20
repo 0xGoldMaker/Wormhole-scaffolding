@@ -43,16 +43,16 @@ contract HelloTokenGovernance is HelloTokenGetters {
      * @param relayerFeePrecision The precision of the relayer fee
      */
     function updateRelayerFee(
-        uint32 relayerFeePercentage,
+        uint32 relayerFeePercentage_,
         uint32 relayerFeePrecision
     ) public onlyOwner {
         require(relayerFeePrecision > 0, "precision must be > 0");
         require(
-            relayerFeePercentage < relayerFeePrecision,
+            relayerFeePercentage_ < relayerFeePrecision,
             "relayer fee percentage must be < precision"
         );
 
-        setRelayerFeePercentage(relayerFeePercentage);
+        setRelayerFeePercentage(relayerFeePercentage_);
         setFeePrecision(relayerFeePrecision);
     }
 
